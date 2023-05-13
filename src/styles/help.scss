@@ -1,0 +1,133 @@
+@for $i from 0 through 24 {
+	@if $i%2==0 {
+		.mg-#{$i} { margin:#{$i}px  !important}
+		.mt-#{$i} { margin-top:#{$i}px !important}
+		.mb-#{$i} { margin-bottom:#{$i}px !important}
+		.ml-#{$i} { margin-left:#{$i}px !important}
+		.mr-#{$i} { margin-right:#{$i}px !important}
+		.mlr-#{$i} { margin-right:#{$i}px;margin-left:#{$i}px !important}
+		.mtb-#{$i} { margin-top:#{$i}px;margin-bottom:#{$i}px !important}
+		.pd-#{$i} { padding:#{$i}px !important}
+		.pt-#{$i} { padding-top:#{$i}px !important}
+		.pb-#{$i} { padding-bottom:#{$i}px !important}
+		.pl-#{$i} { padding-left:#{$i}px !important}
+		.pr-#{$i} { padding-right:#{$i}px !important}
+		.plr-#{$i} { padding-right:#{$i}px;padding-left:#{$i}px !important}
+		.ptb-#{$i} { padding-top:#{$i}px;padding-bottom:#{$i}px !important}
+	}
+}
+@for $i from 12 through 20 {
+  .fz-#{$i} { font-size:#{$i}px}
+}
+$colors:(
+  "t":#1890ff,
+  "white":#fff,
+  "red":#f5222d,
+  "green":#2fc25b,
+  "orange":#fa8014,
+  "primary":#333,
+  "secondary":#666,
+  "gray":#999,
+  "black":#000
+);
+@each $colorKey,$color in $colors {
+  .text-#{$colorKey}{
+    color: $color;
+  }
+  .bg-#{$colorKey}{
+     background:$color;
+  }
+}
+
+$aligns:(
+  "left":left,
+  "center":center,
+  "right":right,
+  "none":none,
+);
+@each $alignKey,$align in $aligns {
+  .text-#{$alignKey}{
+    text-align: $align;
+  }
+  .pull-#{$alignKey}{
+     float:$align;
+  }
+}
+@each $line,$value in (b:bottom,t:top,l:left,r:right) {
+  .#{$line}-line{
+    border-#{$value}:1px solid #e8e8e8;
+  }
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+@mixin nowrap($textoverflow:ellipsis) {
+   word-break: keep-all;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: $textoverflow;
+}
+//多行省略
+@mixin moreover-ellis($num:2)
+{
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    line-clamp:$num;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+.clearfix{
+	@include clearfix
+}
+.nowrap{
+	@include nowrap
+}
+@for $i from 2 through 6 {
+  .over-ellis-#{$i} {
+	  @include moreover-ellis($i)
+  }
+}
+
+$formw:(
+  "wxs":80,
+  "wxm":160,
+  "wsm":240,
+  "wmd":320,
+  "wlg":400,
+  "wxl":480,      
+);
+@each $key,$value in $formw {
+  .form-control-#{$key}{
+     width:#{$value}px !important;
+  }
+  .form-#{$key}{
+	  .el-input{
+		  width:#{$value}px !important;
+	  }
+  }
+}
+.form-control-full{
+  width:100% !important;
+}
+@each $key,$value in (sm:1.2,md:1.5,lg:2) {
+  .hline-#{$key}{
+     line-height:$value;
+  }
+}
+.disIB{
+  display: inline-block !important;
+}
+.disBlock{
+  display: block !important;
+}
