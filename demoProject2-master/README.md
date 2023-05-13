@@ -1,8 +1,9 @@
-学生教师教务信息管理系统
-学生页面在StudentController里面
-教务在ManagerController里面
-教师在TeacherController里面
+课程的增删改查在CourseInformationController里面
+图片上传在PictureUploadController里面
+用户信息的增删改查在UserInformationController里面
+系统评价在SystemEvaluationController里面
+教师评价在TeacherEvaluationController里面
 登录用UserController
-学生账号1019xxxx
-教务账号0x
-教师账号510x
+学生测试账号20010709
+教师账号19760821
+管理员账号10000000
